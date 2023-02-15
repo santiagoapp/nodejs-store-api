@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const factories = require('../factories');
+const factories = require('../../factories');
 
 router.get('/', (req, res) => {
   const users = factories.userFactory.generateUsers(10);
