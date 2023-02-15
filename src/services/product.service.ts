@@ -26,7 +26,7 @@ class ProductsService {
     } catch (error) {
       return {
         message: "Something went wrong trying to create the product.",
-        error,
+        error: error instanceof Error ? error.message : error,
       };
     }
   }
@@ -38,7 +38,7 @@ class ProductsService {
     } catch (error) {
       return {
         message: "Something went wrong trying to get the products.",
-        error,
+        error: error instanceof Error ? error.message : error,
       };
     }
   }
@@ -58,7 +58,7 @@ class ProductsService {
     } catch (error) {
       return {
         message: "Something went wrong trying to get the product.",
-        error,
+        error: error instanceof Error ? error.message : error,
       };
     }
   }
@@ -84,7 +84,7 @@ class ProductsService {
     } catch (error) {
       return {
         message: "Something went wrong trying to update the product.",
-        error,
+        error: error instanceof Error ? error.message : error,
       };
     }
   }
@@ -105,7 +105,7 @@ class ProductsService {
     } catch (error) {
       return {
         message: "Something went wrong trying to delete the product.",
-        error,
+        error: error instanceof Error ? error.message : error,
       };
     }
 
