@@ -1,16 +1,22 @@
-const express = require('express');
-const router = express.Router();
-const factories = require('../../factories');
+import express, { Router } from "express";
+import UserService from "../services/user.service";
+// import validatorHandler from "../middlewares/validator.handler";
+// import {
+//   createProductSchema,
+//   updateProductSchema,
+//   getProductSchema,
+// } from '../schemas/product.schema';
 
-router.get('/', (req, res) => {
-  const users = factories.userFactory.generateUsers(10);
-  res.json(users);
+const router: Router = express.Router();
+const service = new UserService();
+
+router.get("/", async (req, res, next) => {
+  try {
+    const result = await service.find();
+    return res.json(result);
+  } catch (error) {
+    next(error);
+  }
 });
 
-router.get('/:userId', (req, res) => {
-  const { userId } = req.params;
-  const user = factories.userFactory.createRandomUser();
-  res.json({ ...user, userId });
-});
-
-module.exports = router
+export default router;
